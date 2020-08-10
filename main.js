@@ -16,7 +16,7 @@ var giocata_vinta = 0;
 // determino se l'utente inserisce un numero vincente o perdente
 do {
     // chiedo all'utente di digitare un numero
-    var numero_utente = parseInt(prompt('Digita un numero tra 1 e 100!'));
+    var numero_utente = parseInt(prompt('Digita un numero compreso tra 1 e 100!'));
 
     // verifico se rispetta le condizioni (1 >= numero_utente <= 100 e un numero non ancora digitato)
     if (is_valid(numero_utente) == true) {
@@ -24,25 +24,25 @@ do {
         // verifico se l'utente ha beccato una mina
         if (is_mine(numero_utente, numeri_pc) == true) {
             // l'utente ha beccato una mina
-            alert('hai perso!');
+            alert('Hai perso! Ritenta!');
         } else if (numeri_consentiti.includes(numero_utente) == false) {
             // verifico se l'utente ha digitato lo stesso numero più volte
             numeri_consentiti.push(numero_utente);
             giocata_vinta = giocata_vinta + 1;
         } else {
-            alert('Hai già inserito questo numero');
+            alert('Hai già inserito questo numero. Digitane un altro!');
         }
 
     } else {
-        alert('hai inserito un numero non valido!');
+        alert('Hai digitato un valore non valido! Digita un numero compreso tra 1 e 100!');
     }
 
 } while (numeri_consentiti.length != 84 && is_mine(numero_utente, numeri_pc) == false);
 
 if (numeri_consentiti.length == 84) {
-    alert('complimenti, hai vinto!!');
+    alert('Complimenti, hai vinto!!');
 } else {
-    alert('numero giocate: ' + giocata_vinta);
+    alert('Totale giocate: ' + giocata_vinta);
 }
 
 // funzione che vede se un numero è una mina
